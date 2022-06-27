@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Example01 {
@@ -16,9 +17,12 @@ public class Example01 {
 
         System.out.print("Duration(years): ");
         int Years = scanner.nextInt();
-        int NumberOfPayments= Years * MONTH;//n
+        int NumberOfPayments= Years * MONTH;
 
-        double Mortgage = principal *(monthlyRate *Math.pow(1+ monthlyRate ,NumberOfPayments)/ Math.pow(1 + monthlyRate,NumberOfPayments)-1);
+        double Mortgage = (principal *(monthlyRate *(Math.pow(1+ monthlyRate ,NumberOfPayments)))/
+                (Math.pow(1 + monthlyRate,NumberOfPayments)-1));
+        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(Mortgage);
+        System.out.println("Mortgage: " + mortgageFormatted);
 
     }
 }
